@@ -30,11 +30,11 @@ jobs:
 
       - name: SSH into The deployment server 
         run: |
-          ssh ${{ secrets.DEPLOYMENT_SERVER }} 
+          ssh -tt ${{ secrets.DEPLOYMENT_SERVER }} 
 
       - name: TEST
         run: |
-          echo "Login success"      
+          touch Login_success.txt      
 
               
 
