@@ -28,14 +28,19 @@ jobs:
         run: |
           docker push kirubelfikru/test_api_image
 
-      - name: Setup SSH connection
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Deploy application
+      - name: Run Ansible PlayBook
         run: |
-          ssh ${{ secrets.DEPLOYMENT_SERVER }}
+          ansible-playbook -i backend-inventory.txt backend-ansible.yml
+
+
+      # - name: Setup SSH connection
+      #   uses: webfactory/ssh-agent@v0.5.3
+      #   with:
+      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # - name: Deploy application
+      #   run: |
+      #     ssh ${{ secrets.DEPLOYMENT_SERVER }}
     
 
       # - name: SSH into The deployment server 
