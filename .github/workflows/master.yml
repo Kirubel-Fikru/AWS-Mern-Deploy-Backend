@@ -30,7 +30,7 @@ jobs:
 
       - name: Run Ansible PlayBook
         run: |
-          ansible-playbook -i backend-inventory.txt backend-ansible.yml
+          cd /home/ubuntu && ansible-playbook -i backend-inventory.txt backend-ansible.yml
 
 
       # - name: Setup SSH connection
