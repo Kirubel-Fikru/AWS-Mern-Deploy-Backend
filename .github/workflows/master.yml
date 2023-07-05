@@ -30,7 +30,7 @@ jobs:
 
       - name: SSH into The deployment server 
         run: |
-          ssh -tt ${{ secrets.DEPLOYMENT_SERVER }} -y
+          ssh -tt -i /home/ubuntu/.ssh/id_rsa ${{ secrets.DEPLOYMENT_SERVER }} -y
 
       - name: TEST
         run: |
