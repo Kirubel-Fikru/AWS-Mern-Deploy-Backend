@@ -28,13 +28,23 @@ jobs:
         run: |
           docker push kirubelfikru/test_api_image
 
-      - name: SSH into The deployment server 
-        run: |
-          ssh -tt -i ~/.ssh/id_rsa ${{ secrets.DEPLOYMENT_SERVER }}
+      - name: Setup SSH connection
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: TEST
+      - name: Deploy application
         run: |
-          touch Login_success.txt      
+          ssh ${{ secrets.DEPLOYMENT_SERVER }}
+    
+
+      # - name: SSH into The deployment server 
+      #   run: |
+      #     ssh -tt -i ~/.ssh/id_rsa ${{ secrets.DEPLOYMENT_SERVER }}
+
+      # - name: TEST
+      #   run: |
+      #     touch Login_success.txt      
 
               
 
