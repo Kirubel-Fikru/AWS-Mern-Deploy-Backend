@@ -26,7 +26,17 @@ jobs:
 
       - name: Push Test API Docker image
         run: |
-          docker push kirubelfikru/test_api_image    
+          docker push kirubelfikru/test_api_image
+
+      - name: SSH into The deployment server 
+        run: |
+          ssh ${{ secrets.DEPLOYMENT_SERVER }} 
+
+      - name: TEST
+        run: |
+          echo "Login success"      
+
+              
 
       # - name: Deploy Test API
       #   run: |
